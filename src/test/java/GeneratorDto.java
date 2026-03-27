@@ -1,4 +1,5 @@
 public class GeneratorDto {
+
     public static UserDto createUserToPost(){
         return UserDto.builder()
                 .name("Illia")
@@ -6,6 +7,7 @@ public class GeneratorDto {
                 .email("zecqeem@qwe.edu")
                 .build();
     }
+
     public static UserDto updateUserToPut(){
         return UserDto.builder()
                 .name("Lionel")
@@ -13,5 +15,4 @@ public class GeneratorDto {
                 .email("91inayear@qwe.edu")
                 .build();
     }
-
 }

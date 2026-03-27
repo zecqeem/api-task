@@ -8,6 +8,7 @@ public class UsersApiClient {
     public static UsersApiResponse getUsers() {
         return new UsersApiResponse(given().get(ENDPOINT));
     }
+
     public static UsersApiResponse createUser(UserDto user) {
         return new UsersApiResponse(
                 given()
@@ -17,6 +18,7 @@ public class UsersApiClient {
                         .post(ENDPOINT)
         );
     }
+
     public static UsersApiResponse updateUser(UserDto user,int userId) {
         return new UsersApiResponse(
                 given()
@@ -26,6 +28,7 @@ public class UsersApiClient {
                         .put(ENDPOINT + "/" + userId)
         );
     }
+
     public static UsersApiResponse deleteUser(int userId) {
         return new UsersApiResponse(
                 given()

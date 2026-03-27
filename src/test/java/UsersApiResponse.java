@@ -1,8 +1,8 @@
 import io.restassured.response.Response;
-
 import java.util.List;
 
 public class UsersApiResponse {
+
     private final Response response;
 
     public UsersApiResponse(Response response) {
@@ -20,6 +20,7 @@ public class UsersApiResponse {
     public List<UserDto> getUsersAsDto() {
         return response.jsonPath().getList("", UserDto.class);
     }
+
     public UserDto getUserAsDto() {
         return response.as(UserDto.class);
     }
