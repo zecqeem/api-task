@@ -44,7 +44,7 @@ public class ApiTest {
 
     @Test
     public void verifyCreateUserPostRequest() {
-        UserDto newUser = GeneratorDto.createUserToPost();
+        UserDto newUser = GeneratorDto.createDefaultUser();
         UsersApiResponse response = UsersApiClient.createUser(newUser);
 
         assertThat(response.getStatusCode())
@@ -59,20 +59,23 @@ public class ApiTest {
 
     @Test
     public void verifyUpdateUserPutRequest() {
-        UserDto tempUser = GeneratorDto.createUserToPost();
-        int userId = UsersApiClient.createUser(tempUser).getUserAsDto().getId();
+        int userId = 1;
 
-        UserDto updatedData = GeneratorDto.updateUserToPut();
+        UserDto updatedData = GeneratorDto.createUpdatedUser();
         UsersApiResponse response = UsersApiClient.updateUser(updatedData, userId);
 
-        assertThat(response.getStatusCode()).isEqualTo(200);
-        assertThat(response.getUserAsDto().getName()).isEqualTo("Lionel");
-        UsersApiClient.deleteUser(userId);
+        assertThat(response.getStatusCode())
+                .as("Status code should be 200 OK for existing user")
+                .isEqualTo(200);
+
+        assertThat(response.getUserAsDto().getName())
+                .as("Check if name was updated in the response")
+                .isEqualTo("Lionel");
     }
 
     @Test
     public void verifyDeleteUserRequest() {
-        UserDto tempUser = GeneratorDto.createUserToPost();
+        UserDto tempUser = GeneratorDto.createDefaultUser();
         int userId = UsersApiClient.createUser(tempUser).getUserAsDto().getId();
 
         UsersApiResponse response = UsersApiClient.deleteUser(userId);

@@ -1,6 +1,6 @@
 public class GeneratorDto {
 
-    public static UserDto createUserToPost(){
+    public static UserDto createDefaultUser(){
         return UserDto.builder()
                 .name("Illia")
                 .username("zecqeem")
@@ -8,7 +8,7 @@ public class GeneratorDto {
                 .build();
     }
 
-    public static UserDto updateUserToPut(){
+    public static UserDto createUpdatedUser(){
         return UserDto.builder()
                 .name("Lionel")
                 .username("la pulga")
